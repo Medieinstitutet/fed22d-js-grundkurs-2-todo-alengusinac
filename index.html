@@ -8,15 +8,15 @@
     <link rel="manifest" href="/fed22d-js-grundkurs-2-todo-alengusinac/site.webmanifest">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,200,0,0" />
 
     <title>toDo: by alengusinac</title>
     <script type="module" crossorigin src="/fed22d-js-grundkurs-2-todo-alengusinac/assets/index.74d163d3.js"></script>
-    <link rel="stylesheet" href="/fed22d-js-grundkurs-2-todo-alengusinac/assets/index.eea28452.css">
+    <link rel="stylesheet" href="/fed22d-js-grundkurs-2-todo-alengusinac/assets/index.f637b928.css">
   </head>
   <body>
 
-    <!----------------------------HEADER---------------------------------->
+    <!--------------------------HEADER---------------------------------->
     <header>
 
       <button id="sorting-btn" aria-label="button for sorting todo list">
@@ -34,21 +34,21 @@
 
     </header>
 
-    <!-------------------------SORT CONTAINER----------------------------->
+    <!-------------------------SORT MENU----------------------------->
     <section class="sort-container">
 
       <h2>sort</h2>
 
-      <button>by Name</button>
+      <button id="sort-name-btn" aria-label="sort to do's by name.">by Name</button>
 
-      <button>by Deadline</button>
+      <button id="sort-deadline-btn" aria-label="sort to do's by deadline.">by Deadline</button>
 
-      <button>by Date added</button>
+      <button id="sort-date-added-btn" aria-label="sort to do's by date added.">by Date added</button>
 
     </section>
 
 
-     <!---------------------ADD ITEM CONTAINER---------------------------->
+     <!---------------------ADD ITEM MENU---------------------------->
     <section class="add-item-container">
 
       <form action="">
@@ -72,10 +72,28 @@
       </form>
     </section>
 
+     <!-----------------------toDo LIST------------------------------>
     <main>
-      <article class="toDoItem">
-        <button></button>
+
+      <article class="todo-item">
+
+        <button>
+          <span class="material-symbols-outlined">task_alt</span>
+        </button>
+
+        <p>Workout - Running</p>
+
+        <div class="time-left">
+          <span class="material-symbols-outlined">hourglass_empty</span>
+          <span>2h 30min</span>
+        </div>
+
+        <button>
+          <span class="material-symbols-outlined">do_not_disturb_on</span>
+        </button>
+        
       </article>
+
     </main>
 
     <!-- TODO
