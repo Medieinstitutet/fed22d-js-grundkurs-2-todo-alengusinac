@@ -12,26 +12,70 @@
 
     <title>toDo: by alengusinac</title>
     <script type="module" crossorigin src="/fed22d-js-grundkurs-2-todo-alengusinac/assets/index.74d163d3.js"></script>
-    <link rel="stylesheet" href="/fed22d-js-grundkurs-2-todo-alengusinac/assets/index.67deb69e.css">
+    <link rel="stylesheet" href="/fed22d-js-grundkurs-2-todo-alengusinac/assets/index.eea28452.css">
   </head>
   <body>
 
     <!----------------------------HEADER---------------------------------->
     <header>
+
       <button id="sorting-btn" aria-label="button for sorting todo list">
         <span class="material-symbols-outlined">tune</span>
       </button>
+
       <button id="categories-btn" aria-label="button for changing categories">
         <span>all categories</span>
         <span class="material-symbols-outlined">keyboard_arrow_down</span>
       </button>
+
       <button id="adding-btn" aria-label="button for adding todo to list">
         <span class="material-symbols-outlined">add_box</span>
       </button>
+
     </header>
 
+    <!-------------------------SORT CONTAINER----------------------------->
+    <section class="sort-container">
+
+      <h2>sort</h2>
+
+      <button>by Name</button>
+
+      <button>by Deadline</button>
+
+      <button>by Date added</button>
+
+    </section>
+
+
+     <!---------------------ADD ITEM CONTAINER---------------------------->
+    <section class="add-item-container">
+
+      <form action="">
+        <label>
+          title
+          <input type="text" placeholder="ex. Eat Icecream">
+        </label>
+        <label>
+          category
+          <input type="text" placeholder="category">
+        </label>
+        <label>
+          date
+          <input type="date" placeholder="date">
+        </label>
+        <label>
+          time
+          <input type="time" placeholder="time">
+        </label>
+        <button>add toDo</button>
+      </form>
+    </section>
+
     <main>
-      
+      <article class="toDoItem">
+        <button></button>
+      </article>
     </main>
 
     <!-- TODO
