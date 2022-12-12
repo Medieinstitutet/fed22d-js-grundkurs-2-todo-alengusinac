@@ -1,0 +1,20 @@
+(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const s of e)if(s.type==="childList")for(const a of s.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&i(a)}).observe(document,{childList:!0,subtree:!0});function t(e){const s={};return e.integrity&&(s.integrity=e.integrity),e.referrerpolicy&&(s.referrerPolicy=e.referrerpolicy),e.crossorigin==="use-credentials"?s.credentials="include":e.crossorigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function i(e){if(e.ep)return;e.ep=!0;const s=t(e);fetch(e.href,s)}})();const y=document.querySelector("#sorting-btn"),L=document.querySelector("#categories-btn"),v=document.querySelector("#add-btn"),l=document.querySelector(".sort-container"),r=document.querySelector(".add-item-container"),p=[{title:"Example",category:"example",deadline:new Date("2023-01-17 00:00:00"),dateAddedToList:new Date("Sat Dec 10 2022 16:10:26 GMT+0800 (Central Indonesia Time)")}],E=document.querySelector("#todo-items-container"),u=document.querySelector("#title-input"),d=document.querySelector("#category-input"),f=document.querySelector("#date-input"),c=document.querySelector("#add-item-btn");let h=!1,T=!1,m=!1;function D(o){const t=o.currentTarget.id;t==="sorting-btn"?(l==null||l.classList.toggle("open"),r!=null&&r.classList.contains("open")&&(r==null||r.classList.remove("open"))):t==="add-btn"&&(r==null||r.classList.toggle("open"),l!=null&&l.classList.contains("open")&&(l==null||l.classList.remove("open")))}function M(o){const n=o.currentTarget,t=n.value,e=n.parentElement.querySelector(".input-error");if(n.id==="date-input"){const s=new Date,a=s.getFullYear(),S=s.getMonth()+1,H=s.getDate(),b=t.split("-"),g=Number(b[0]),k=Number(b[1]),A=Number(b[2]);g>a&&g.toString().length===4?(m=!0,e.innerHTML=""):g===a&&k>S?(console.log("HEY!"),m=!0,e.innerHTML=""):g===a&&k===S&&A>=H?(m=!0,e.innerHTML=""):t?(m=!1,e.innerHTML="cannot be in the Past"):(m=!1,e.innerHTML="is Required")}n.id==="title-input"&&(t?(h=!0,e.innerHTML=""):(h=!1,e.innerHTML="is Required")),n.id==="category-input"&&(t?(T=!0,e.innerHTML=""):(T=!1,e.innerHTML="is Required")),h&&T&&m?c==null||c.removeAttribute("disabled"):c==null||c.setAttribute("disabled","true")}function I(o){const n=o.deadline.getTime(),t=new Date().getTime(),i=n-t;return Math.ceil(i/(1e3*60*60*24))}function q(){E.innerHTML="";for(let o=0;o<p.length;o++){const n=p[o],t=I(n);E.innerHTML+=`
+    <article class="todo-item">
+
+      <button>
+        <span id="${o}" class="material-symbols-outlined check-item-btn">task_alt</span>
+      </button>
+
+      <p>${n.title}</p>
+
+      <div class="time-left">
+        <span class="material-symbols-outlined">hourglass_empty</span>
+        <span>${t}days</span>
+      </div>
+
+      <button>
+        <span id="${o}" class="material-symbols-outlined remove-item-btn">do_not_disturb_on</span>
+      </button>
+    
+    </article>
+    `}F()}function w(o){const n=o.currentTarget,t=Number(n.id);p.splice(t,1),q()}function N(o){const n=o.currentTarget,t=Number(n.id),i=p[t];i.isChecked?i.isChecked=!1:i.isChecked=!0}function F(){const o=document.querySelectorAll(".remove-item-btn"),n=document.querySelectorAll(".check-item-btn");for(let t=0;t<o.length;t++)o[t].addEventListener("click",w);for(let t=0;t<n.length;t++)n[t].addEventListener("click",N)}function _(){r==null||r.classList.remove("open"),c==null||c.setAttribute("disabled","true"),u.value="",d.value="",f.value=""}function O(){const o=u==null?void 0:u.value,n=d==null?void 0:d.value,t=new Date(f.value),i=new Date,e={title:o,category:n,deadline:t,dateAddedToList:i,isChecked:!1};p.push(e),_(),q()}y==null||y.addEventListener("click",D);L==null||L.addEventListener("click",D);v==null||v.addEventListener("click",D);u==null||u.addEventListener("blur",M);d==null||d.addEventListener("blur",M);f==null||f.addEventListener("change",M);c==null||c.addEventListener("click",O);q();
