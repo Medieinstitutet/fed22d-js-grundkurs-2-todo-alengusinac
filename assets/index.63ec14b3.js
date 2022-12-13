@@ -1,0 +1,20 @@
+(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const s of e)if(s.type==="childList")for(const u of s.addedNodes)u.tagName==="LINK"&&u.rel==="modulepreload"&&i(u)}).observe(document,{childList:!0,subtree:!0});function t(e){const s={};return e.integrity&&(s.integrity=e.integrity),e.referrerpolicy&&(s.referrerPolicy=e.referrerpolicy),e.crossorigin==="use-credentials"?s.credentials="include":e.crossorigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function i(e){if(e.ep)return;e.ep=!0;const s=t(e);fetch(e.href,s)}})();const L=document.querySelector("#sorting-btn"),v=document.querySelector("#categories-btn"),h=document.querySelector("#add-btn"),l=document.querySelector(".sort-container"),r=document.querySelector(".add-item-container");let a=[];const E=document.querySelector("#todo-items-container"),d=document.querySelector("#title-input"),f=document.querySelector("#category-input"),g=document.querySelector("#date-input"),c=document.querySelector("#add-item-btn");let S=!1,D=!1,m=!1;function k(o){const t=o.currentTarget.id;t==="sorting-btn"?(l==null||l.classList.toggle("open"),r!=null&&r.classList.contains("open")&&(r==null||r.classList.remove("open"))):t==="add-btn"&&(r==null||r.classList.toggle("open"),l!=null&&l.classList.contains("open")&&(l==null||l.classList.remove("open")))}function T(o){const n=o.currentTarget,t=n.value,e=n.parentElement.querySelector(".input-error");if(n.id==="date-input"){const s=new Date,u=s.getFullYear(),q=s.getMonth()+1,H=s.getDate(),y=t.split("-"),p=Number(y[0]),M=Number(y[1]),I=Number(y[2]);p>u&&p.toString().length===4?(m=!0,e.innerHTML=""):p===u&&M>q?(console.log("HEY!"),m=!0,e.innerHTML=""):p===u&&M===q&&I>=H?(m=!0,e.innerHTML=""):t?(m=!1,e.innerHTML="cannot be in the Past"):(m=!1,e.innerHTML="is Required")}n.id==="title-input"&&(t?(S=!0,e.innerHTML=""):(S=!1,e.innerHTML="is Required")),n.id==="category-input"&&(t?(D=!0,e.innerHTML=""):(D=!1,e.innerHTML="is Required")),S&&D&&m?c==null||c.removeAttribute("disabled"):c==null||c.setAttribute("disabled","true")}function N(o){return o.isChecked?" checked":""}function A(o){const t=new Date(o.deadline).getTime(),i=new Date().getTime(),e=t-i;return Math.ceil(e/(1e3*60*60*24))}function b(){E.innerHTML="";for(let o=0;o<a.length;o++){const n=a[o],t=N(n),i=A(n);E.innerHTML+=`
+    <article class="todo-item open${t}">
+
+      <button>
+        <span id="${o}" class="material-symbols-outlined check-item-btn">task_alt</span>
+      </button>
+
+      <p>${n.title}</p>
+
+      <div class="time-left">
+        <span class="material-symbols-outlined">hourglass_empty</span>
+        <span>${i}days</span>
+      </div>
+
+      <button>
+        <span id="${o}" class="material-symbols-outlined remove-item-btn">do_not_disturb_on</span>
+      </button>
+    
+    </article>
+    `}F(),J()}function O(o){const n=o.currentTarget,t=Number(n.id);a.splice(t,1),b()}function w(o){const n=o.currentTarget,t=Number(n.id),i=a[t];i.isChecked?i.isChecked=!1:i.isChecked=!0,b()}function F(){const o=document.querySelectorAll(".remove-item-btn"),n=document.querySelectorAll(".check-item-btn");for(let t=0;t<o.length;t++)o[t].addEventListener("click",O);for(let t=0;t<n.length;t++)n[t].addEventListener("click",w)}function _(){r==null||r.classList.remove("open"),c==null||c.setAttribute("disabled","true"),d.value="",f.value="",g.value=""}function $(){const o=d==null?void 0:d.value,n=f==null?void 0:f.value,t=new Date(g.value),i=new Date,e={title:o,category:n,deadline:t,dateAddedToList:i,isChecked:!1};a.push(e),_(),b()}function J(){localStorage.setItem("data",JSON.stringify(a))}function V(){localStorage.getItem("data")!==null&&(a=JSON.parse(localStorage.getItem("data")))}L==null||L.addEventListener("click",k);v==null||v.addEventListener("click",k);h==null||h.addEventListener("click",k);d==null||d.addEventListener("blur",T);f==null||f.addEventListener("blur",T);g==null||g.addEventListener("change",T);c==null||c.addEventListener("click",$);V();b();console.log(a);
