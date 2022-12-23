@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,200,0,0" />
 
     <title>toDo: by alengusinac</title>
-    <script type="module" crossorigin src="/fed22d-js-grundkurs-2-todo-alengusinac/assets/index.3e2c3d8a.js"></script>
-    <link rel="stylesheet" href="/fed22d-js-grundkurs-2-todo-alengusinac/assets/index.810b9db9.css">
+    <script type="module" crossorigin src="/fed22d-js-grundkurs-2-todo-alengusinac/assets/index.0156c72a.js"></script>
+    <link rel="stylesheet" href="/fed22d-js-grundkurs-2-todo-alengusinac/assets/index.38c07258.css">
   </head>
   <body>
     
@@ -20,16 +20,16 @@
       <!--------------------------HEADER---------------------------------->
       <header>
 
-        <button id="sorting-btn" aria-label="button for sorting todo list">
+        <button id="sorting-btn" aria-label="for sorting todo list">
           <span class="material-symbols-outlined">tune</span>
         </button>
 
-        <button id="categories-btn" aria-label="button for changing categories">
+        <button id="categories-btn" aria-label="for changing categories">
           <span id="category-title">all categories</span>
           <span class="material-symbols-outlined">keyboard_arrow_down</span>
         </button>
 
-        <button id="add-btn" aria-label="button for adding todo to list">
+        <button id="add-btn" aria-label="for adding todo to list">
           <span class="material-symbols-outlined">add_box</span>
         </button>
 
@@ -62,10 +62,12 @@
       <!---------------------ADD ITEM MENU---------------------------->
       <section class="add-item-container">
 
+        <h2>add toDo</h2>
+
         <form onsubmit="return false;" novalidate>
           <label>
             title <span class="input-error"></span>
-            <input id="title-input" type="text" placeholder="ex. Eat Icecream">
+            <input id="title-input" type="text" maxlength="50" placeholder="ex. Eat Icecream">
           </label>
           <label>
             category <span class="input-error"></span>
@@ -75,8 +77,7 @@
           </label>
           <label>
             deadline date <span class="input-error"></span>
-            <input id="date-input" type="date"
-          min="2022-12-10" max="2030-12-31" required>
+            <input id="date-input" type="date" required>
           </label>
           <button id="add-item-btn" aria-label="for submitting form." disabled>add toDo</button>
         </form>
